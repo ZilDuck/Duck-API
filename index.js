@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const app = express()
 const fs = require('fs')
@@ -190,6 +191,21 @@ app.get('/rewards', async (req, res, next) => {
             
         })
     } catch (err) {
+        next(err)
+    }
+})
+
+app.get('/collection_metadata', async (req, res, next) => {
+    const filePath = `/metadata/collection_metadata.json`
+
+    const data = fs.readFileSync(filePath)
+    const obj = JSON.parse(data)
+
+    try {
+        res.status(200).json(obj)
+    } catch (err) {
+        err.type = 'not-found'
+        err.message = 'Collection metadata does not exist'
         next(err)
     }
 })

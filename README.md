@@ -1,8 +1,16 @@
 # nfd-api
 
-Uses an Sqlite3 db with every duck to allow for sorting on the server side
+Uses an Sqlite3 db with every duck to allow for sorting on the server side.
+Also contains the rewards api to allow frontend to read MongoDB.
 
-## Single duck
+#### .env
+Supply the following
+    MAINNET_CONTRACT
+    TESTNET_CONTRACT
+    NETWORK
+
+## NFDs
+#### Single duck
 
     /duck/[id]
 
@@ -10,7 +18,7 @@ Uses an Sqlite3 db with every duck to allow for sorting on the server side
 
 -----
 
-## Multiple ducks:
+#### Multiple ducks:
     /ducks/
 
 #### from
@@ -25,7 +33,7 @@ Uses an Sqlite3 db with every duck to allow for sorting on the server side
 #### sortBy:
     - baseRarity
     - beakRarity
-     - eyesRarity
+    - eyesRarity
     - hatRarity
     - outfitRarity
     - overallRarity
@@ -34,8 +42,25 @@ Uses an Sqlite3 db with every duck to allow for sorting on the server side
     - asc
     - desc
 
+#### Filters
+    - base
+    - beak
+    - eyes
+    - hat
+    - outfit
+    - background
 
 
+```https://api/duck.community/ducks?from=1&to=20&sortBy=overallRarity&order=asc```    
+```https://api.duck.community/ducks?from=1&to=24&sortBy=overallRarity&order=desc&outfit=Black+Deezys```
 
+#### Owner
+    Can filter request by the duck owner as well.
+    Here's my ducks:
 
-```https://api/duck.community/ducks?from=1&to=20&sortBy=overallRarity&order=asc```
+```https://api.duck.community/ducks?owner=0x24DdeDbf3A3DF608f4C9fbF56153866947e1b159```
+
+-----
+
+## rewards
+```https://api/duck.community/rewards```
