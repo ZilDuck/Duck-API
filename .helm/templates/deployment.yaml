@@ -22,6 +22,8 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.app.url }}:{{ .Values.image.app.tag }}"
           imagePullPolicy: {{ .Values.image.app.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.port }}
           env:
             - name: mainnet_contract
               value: {{ .Values.env.mainnet_contract | quote }}
