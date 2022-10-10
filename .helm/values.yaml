@@ -8,6 +8,9 @@ image:
     url: elastic/filebeat:7.17.0
     pullPolicy: IfNotPresent
 
+port: 4000
+targetPort: 4000
+
 logPath: /app/logs
 
 replicas: 1
