@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: duck-api
+  name: {{ .Release.Name }}
 spec:
   rules:
   - host: {{ .Values.ingress.host }}
@@ -9,7 +9,7 @@ spec:
       paths:
       - backend:
           service:
-            name: duck-api
+            name: {{ .Release.Name }}
             port:
               number: {{ .Values.port }}
         path: /
